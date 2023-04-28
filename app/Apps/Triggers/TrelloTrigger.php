@@ -48,9 +48,7 @@ class TrelloTrigger
     public function new_board_changes($zapDatabase = [], $zapData = [])
     {
         $zapDatabase = json_decode($zapDatabase, true)['Files'];
-        $zapData = json_decode($zapData, true);
-        $data = Helpers::IllitarableArray($zapData['trigger']['Data']);
-        $value = Helpers::evaluteData($data);
+
         $files = $this->mainClass->listBoards($this->access_token, ['memberId' =>$this->mainClass->getUserId()]);
         $oldFiles = [];
         $dataFiles = [];
